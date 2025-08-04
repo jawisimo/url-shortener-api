@@ -1,21 +1,16 @@
-package com.ikg100.urlshortenerapi.user.dto;
+package com.ikg100.urlshortenerapi.security.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Schema
-public class RegisterUserRequest {
-
-    @Schema(example = "user123")
-    private String login;
+public class AuthUserRequest {
 
     @Schema(example = "test@email.com")
-    private String email;
+    private String identifier;
 
     @Schema(example = "passWord123")
     private String password;
 }
-
