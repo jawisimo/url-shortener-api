@@ -157,13 +157,6 @@
             </build>
         </profile>
 
-        <profile>
-            <id>test</id>
-            <properties>
-                <spring.profiles.active>test</spring.profiles.active>
-                <spring.config.name>application-test</spring.config.name>
-            </properties>
-        </profile>
     </profiles>
 
     <build>
