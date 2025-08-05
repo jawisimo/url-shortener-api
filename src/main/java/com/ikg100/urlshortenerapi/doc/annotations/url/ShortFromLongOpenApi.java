@@ -1,7 +1,7 @@
-package com.ikg100.urlshortenerapi.openapi.annotations.user;
+package com.ikg100.urlshortenerapi.doc.annotations.url;
 
 import com.ikg100.urlshortenerapi.error.ErrorResponse;
-import com.ikg100.urlshortenerapi.user.dto.RegisterUserResponse;
+import com.ikg100.urlshortenerapi.url.dto.operations.UrlResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -15,31 +15,32 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Operation(
-        summary = "Register a new user",
-        description = "Registers a new user with provided credentials")
+        summary = "Shorten a long URL",
+        description = "Creates a short version of the provided long URL")
 @ApiResponses({
         @ApiResponse(
                 responseCode = "201",
-                description = "User registered successfully",
-                content = @Content(schema = @Schema(implementation = RegisterUserResponse.class))),
+                description = "Short URL code returned",
+                content = @Content(schema = @Schema(implementation = UrlResponse.class))),
         @ApiResponse(
                 responseCode = "400",
-                description = "Input data is not correct (e.g., incorrect login or email format)",
+                description = "Data is not correct (e.g., incorrect long url or expires date)",
                 content = @Content(
                         schema = @Schema(implementation = ErrorResponse.class),
                         examples = @ExampleObject(
                                 name = "BadRequestExample",
-                                ref = "#/components/examples/BadRequestExample"))),
+                                ref = "#/components/examples/BadRequestExample")
+                )),
         @ApiResponse(
-                responseCode = "409",
-                description = "User with login or email already exists",
+                responseCode = "403",
+                description = "Forbidden",
                 content = @Content(
                         schema = @Schema(implementation = ErrorResponse.class),
                         examples = @ExampleObject(
-                                name = "ConflictExample",
-                                ref = "#/components/examples/ConflictExample")))
+                                name = "ForbiddenExample",
+                                ref = "#/components/examples/ForbiddenExample"))),
 })
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface RegisterUserOpenApi {
+public @interface ShortFromLongOpenApi {
 }

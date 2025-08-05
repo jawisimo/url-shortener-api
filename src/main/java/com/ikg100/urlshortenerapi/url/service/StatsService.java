@@ -1,7 +1,7 @@
 package com.ikg100.urlshortenerapi.url.service;
 
 import com.ikg100.urlshortenerapi.error.exception.ResourceNotFoundException;
-import com.ikg100.urlshortenerapi.security.SecurityContextProvider;
+import com.ikg100.urlshortenerapi.security.provider.SecurityContextProvider;
 import com.ikg100.urlshortenerapi.url.Url;
 import com.ikg100.urlshortenerapi.url.UrlMapper;
 import com.ikg100.urlshortenerapi.url.UrlRepository;

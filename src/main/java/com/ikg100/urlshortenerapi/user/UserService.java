@@ -5,7 +5,6 @@ import com.ikg100.urlshortenerapi.security.Role;
 import com.ikg100.urlshortenerapi.user.dto.RegisterUserRequest;
 import com.ikg100.urlshortenerapi.user.dto.RegisterUserResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +26,7 @@ import static com.ikg100.urlshortenerapi.util.MessageProvider.generateUserWithLo
 public class UserService {
     private final UserRepository userRepository;
     private final UserValidator userValidator;
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * Registers a new user with the provided registration details.

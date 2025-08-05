@@ -1,7 +1,7 @@
 package com.ikg100.urlshortenerapi.url.controller;
 
-import com.ikg100.urlshortenerapi.openapi.annotations.AllUrlsOpenApi;
-import com.ikg100.urlshortenerapi.openapi.annotations.VisitsByShortUrlOpenApi;
+import com.ikg100.urlshortenerapi.doc.annotations.url.UrlListOpenApi;
+import com.ikg100.urlshortenerapi.doc.annotations.url.VisitsByShortUrlOpenApi;
 import com.ikg100.urlshortenerapi.url.dto.statistics.StatsListUrlResponse;
 import com.ikg100.urlshortenerapi.url.dto.statistics.StatsVisitsUrlResponse;
 import com.ikg100.urlshortenerapi.url.service.StatsService;
@@ -37,7 +37,7 @@ public class StatsController {
      *
      * @return a {@link ResponseEntity} containing a list of URLs and an HTTP status
      */
-    @AllUrlsOpenApi
+    @UrlListOpenApi
     @GetMapping("/all")
     public ResponseEntity<StatsListUrlResponse> allUrls() {
         StatsListUrlResponse response = statsService.getAllUrls();
@@ -53,7 +53,7 @@ public class StatsController {
      *
      * @return a {@link ResponseEntity} containing a list of active URLs and an HTTP status
      */
-    @AllUrlsOpenApi
+    @UrlListOpenApi
     @GetMapping("/active")
     public ResponseEntity<StatsListUrlResponse> activeUrls() {
         StatsListUrlResponse response = statsService.getActiveUrls();

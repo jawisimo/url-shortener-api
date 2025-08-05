@@ -1,6 +1,7 @@
-package com.ikg100.urlshortenerapi.openapi.annotations.url;
+package com.ikg100.urlshortenerapi.doc.annotations.user;
 
 import com.ikg100.urlshortenerapi.error.ErrorResponse;
+import com.ikg100.urlshortenerapi.user.dto.RegisterUserResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -13,30 +14,32 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Operation(summary = "Delete a shortened URL", description = "Removes a URL mapping from the system")
+@Operation(
+        summary = "Register a new user",
+        description = "Registers a new user with provided credentials")
 @ApiResponses({
         @ApiResponse(
-                responseCode = "204",
-                description = "Url has been deleted successfully",
-                content = @Content()),
+                responseCode = "201",
+                description = "User registered successfully",
+                content = @Content(schema = @Schema(implementation = RegisterUserResponse.class))),
         @ApiResponse(
-                responseCode = "403",
-                description = "Forbidden",
+                responseCode = "400",
+                description = "Input data is not correct (e.g., incorrect login or email format)",
                 content = @Content(
                         schema = @Schema(implementation = ErrorResponse.class),
                         examples = @ExampleObject(
-                                name = "ForbiddenExample",
-                                ref = "#/components/examples/ForbiddenExample"))),
+                                name = "BadRequestExample",
+                                ref = "#/components/examples/BadRequestExample"))),
         @ApiResponse(
-                responseCode = "404",
-                description = "URL not found",
+                responseCode = "409",
+                description = "User with login or email already exists",
                 content = @Content(
                         schema = @Schema(implementation = ErrorResponse.class),
                         examples = @ExampleObject(
-                                name = "NotFoundExample",
-                                ref = "#/components/examples/NotFoundExample")))
+                                name = "ConflictExample",
+                                ref = "#/components/examples/ConflictExample")))
 })
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface DeleteUrlOpenApi {
+public @interface RegisterUserOpenApi {
 }

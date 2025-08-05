@@ -1,7 +1,7 @@
 package com.ikg100.urlshortenerapi.user;
 
-import com.ikg100.urlshortenerapi.openapi.annotations.user.RegisterUserOpenApi;
-import com.ikg100.urlshortenerapi.openapi.annotations.user.RegisterUserOpenApiRequestBody;
+import com.ikg100.urlshortenerapi.doc.annotations.user.RegisterUserOpenApi;
+import com.ikg100.urlshortenerapi.doc.annotations.user.RegisterUserOpenApiRequestBody;
 import com.ikg100.urlshortenerapi.user.dto.RegisterUserRequest;
 import com.ikg100.urlshortenerapi.user.dto.RegisterUserResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;

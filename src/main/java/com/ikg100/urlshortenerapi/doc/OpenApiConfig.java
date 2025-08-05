@@ -1,4 +1,4 @@
-package com.ikg100.urlshortenerapi.openapi;
+package com.ikg100.urlshortenerapi.doc;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;

@@ -1,4 +1,4 @@
-package com.ikg100.urlshortenerapi.openapi.annotations.url;
+package com.ikg100.urlshortenerapi.doc.annotations.url;
 
 import com.ikg100.urlshortenerapi.error.ErrorResponse;
 import com.ikg100.urlshortenerapi.url.dto.operations.UrlResponse;
@@ -14,7 +14,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Operation(summary = "Update a shortened URL", description = "Modifies the stored URL mapping")
+@Operation(
+        summary = "Update a shortened URL",
+        description = "Modifies the stored URL mapping")
 @ApiResponses({
         @ApiResponse(
                 responseCode = "200",

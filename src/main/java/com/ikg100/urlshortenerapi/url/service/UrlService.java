@@ -2,7 +2,7 @@ package com.ikg100.urlshortenerapi.url.service;
 
 import com.ikg100.urlshortenerapi.error.exception.ResourceNotFoundException;
 import com.ikg100.urlshortenerapi.error.exception.ValidationException;
-import com.ikg100.urlshortenerapi.security.SecurityContextProvider;
+import com.ikg100.urlshortenerapi.security.provider.SecurityContextProvider;
 import com.ikg100.urlshortenerapi.url.*;
 import com.ikg100.urlshortenerapi.url.dto.operations.GetShortUrlRequest;
 import com.ikg100.urlshortenerapi.url.dto.operations.UpdateUrlRequest;

@@ -1,6 +1,6 @@
 package com.ikg100.urlshortenerapi.url.controller;
 
-import com.ikg100.urlshortenerapi.openapi.annotations.url.*;
+import com.ikg100.urlshortenerapi.doc.annotations.url.*;
 import com.ikg100.urlshortenerapi.url.dto.operations.GetShortUrlRequest;
 import com.ikg100.urlshortenerapi.url.dto.operations.UpdateUrlRequest;
 import com.ikg100.urlshortenerapi.url.dto.operations.UrlResponse;

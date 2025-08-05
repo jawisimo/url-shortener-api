@@ -1,6 +1,7 @@
-package com.ikg100.urlshortenerapi.security;
+package com.ikg100.urlshortenerapi.security.provider;
 
 import com.ikg100.urlshortenerapi.error.exception.UnauthorizedException;
+import com.ikg100.urlshortenerapi.security.CustomUserDetails;
 import com.ikg100.urlshortenerapi.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

@@ -1,7 +1,7 @@
-package com.ikg100.urlshortenerapi.openapi.annotations;
+package com.ikg100.urlshortenerapi.doc.annotations.url;
 
 import com.ikg100.urlshortenerapi.error.ErrorResponse;
-import com.ikg100.urlshortenerapi.url.dto.statistics.StatsListUrlResponse;
+import com.ikg100.urlshortenerapi.url.dto.statistics.StatsVisitsUrlResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -15,17 +15,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Operation(
-        summary = "Get all URLs",
-        description = "Retrieves all URLs created by the authenticated user"
-)
+        summary = "Get visit count for a URL",
+        description = "Retrieves the number of times a short URL has been visited")
 @ApiResponses({
         @ApiResponse(
                 responseCode = "200",
-                description = "URLs provided",
-                content = @Content(
-                        mediaType = "application/json",
-                        schema = @Schema(implementation = StatsListUrlResponse.class))
-        ),
+                description = "URL provided",
+                content = @Content(schema = @Schema(implementation = StatsVisitsUrlResponse.class))),
         @ApiResponse(
                 responseCode = "403",
                 description = "Forbidden",
@@ -33,9 +29,17 @@ import java.lang.annotation.Target;
                         schema = @Schema(implementation = ErrorResponse.class),
                         examples = @ExampleObject(
                                 name = "ForbiddenExample",
-                                ref = "#/components/examples/ForbiddenExample")))
+                                ref = "#/components/examples/ForbiddenExample"))),
+        @ApiResponse(
+                responseCode = "404",
+                description = "URL not found",
+                content = @Content(
+                        schema = @Schema(implementation = ErrorResponse.class),
+                        examples = @ExampleObject(
+                                name = "NotFoundExample",
+                                ref = "#/components/examples/NotFoundExample")))
 })
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface AllUrlsOpenApi {
+public @interface VisitsByShortUrlOpenApi {
 }

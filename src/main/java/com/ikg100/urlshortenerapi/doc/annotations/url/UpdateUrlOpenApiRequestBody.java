@@ -1,4 +1,4 @@
-package com.ikg100.urlshortenerapi.openapi.annotations.url;
+package com.ikg100.urlshortenerapi.doc.annotations.url;
 
 import com.ikg100.urlshortenerapi.url.dto.operations.UpdateUrlRequest;
 import io.swagger.v3.oas.annotations.media.Content;
