@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:15
+    container_name: url_shortener_api_dev_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: url_shortener_api_dev_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - data:/var/lib/postgresql/data'
+    networks:
+      - url_shortener_api_dev_network
+
+volumes:
+  data:
+    driver: local
+
+networks:
+  url_shortener_api_dev_network:
+    driver: bridge
