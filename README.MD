@@ -45,22 +45,27 @@ The URL Shortener Project provides the following features:
 ### Development Environment (dev profile, port: 8080)
 
 - **Start the development database stack**:  
+  ```bash
   docker-compose -p url_shortener_api_devstack -f ./docker-compose-dev.yml up --build
 
 - **Run the application**:  
+  ```bash
   mvn clean spring-boot:run -Pdev
 
 ### Test Environment (test profile)
 
 - **Start tests (with test database)**:  
+  ```bash
   mvn clean test 
 
 ### Production Environment (prod profile, port: 9999)
 
 - **Build the application**:  
+  ```bash
   mvn clean package -Pprod
 
 - **Start the full application stack**:  
+  ```bash
   docker-compose -p url_shortener_api_prodstack -f ./docker-compose-prod.yml up --build
 
 ## Swagger UI
