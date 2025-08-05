@@ -29,6 +29,10 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles ValidationException and returns a BAD_REQUEST response with the error details.
+     *
+     * @param e       the ValidationException thrown during request processing
+     * @param request the HttpServletRequest associated with the failed request
+     * @return ResponseEntity containing ErrorResponse with BAD_REQUEST status and error details
      */
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<ErrorResponse> handleUserValidateException(ValidationException e,
@@ -45,6 +49,10 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles UserExistsException and returns a CONFLICT response with the error details.
+     *
+     * @param e       the UserExistsException thrown during user registration
+     * @param request the HttpServletRequest associated with the failed request
+     * @return ResponseEntity containing ErrorResponse with CONFLICT status and error details
      */
     @ExceptionHandler(UserExistsException.class)
     public ResponseEntity<ErrorResponse> handleUserExistsException(UserExistsException e,
@@ -61,6 +69,10 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles BadCredentialsException and returns an UNAUTHORIZED response with the error details.
+     *
+     * @param e       the BadCredentialsException thrown during authentication
+     * @param request the HttpServletRequest associated with the failed request
+     * @return ResponseEntity containing ErrorResponse with UNAUTHORIZED status and error details
      */
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ErrorResponse> handleBadCredentialsException(BadCredentialsException e,
@@ -77,6 +89,10 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles UnauthorizedException and returns an UNAUTHORIZED response with the error details.
+     *
+     * @param e       the UnauthorizedException indicating forbidden access
+     * @param request the HttpServletRequest associated with the failed request
+     * @return ResponseEntity containing ErrorResponse with UNAUTHORIZED status and error details
      */
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseEntity<ErrorResponse> handleUnauthorizedException(UnauthorizedException e,
@@ -93,6 +109,10 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles UsernameNotFoundException and returns an UNAUTHORIZED response with the error details.
+     *
+     * @param e       the UsernameNotFoundException thrown when a user is not found
+     * @param request the HttpServletRequest associated with the failed request
+     * @return ResponseEntity containing ErrorResponse with UNAUTHORIZED status and error details
      */
     @ExceptionHandler(UsernameNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleUsernameNotFoundException(UsernameNotFoundException e,
@@ -109,6 +129,10 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles ResourceNotFoundException and returns a NOT_FOUND response with the error details.
+     *
+     * @param e       the ResourceNotFoundException thrown when a requested resource is not found
+     * @param request the HttpServletRequest associated with the failed request
+     * @return ResponseEntity containing ErrorResponse with NOT_FOUND status and error details
      */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException e,
@@ -125,6 +149,10 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles IOException and returns an INTERNAL_SERVER_ERROR response with the error details.
+     *
+     * @param e       the IOException thrown during input/output operations
+     * @param request the HttpServletRequest associated with the failed request
+     * @return ResponseEntity containing ErrorResponse with INTERNAL_SERVER_ERROR status and error details
      */
     @ExceptionHandler(IOException.class)
     public ResponseEntity<ErrorResponse> handleIOException(IOException e, HttpServletRequest request) {
@@ -140,6 +168,10 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles JsonParseException and returns a BAD_REQUEST response with the error details.
+     *
+     * @param e       the JsonParseException thrown during JSON parsing
+     * @param request the HttpServletRequest associated with the failed request
+     * @return ResponseEntity containing ErrorResponse with BAD_REQUEST status and error details
      */
     @ExceptionHandler(JsonParseException.class)
     public ResponseEntity<ErrorResponse> handleJsonParseException(JsonParseException e, HttpServletRequest request) {
@@ -155,6 +187,10 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles HttpMessageNotReadableException and returns a BAD_REQUEST response with the error details.
+     *
+     * @param e       the HttpMessageNotReadableException thrown when the request body is not readable
+     * @param request the HttpServletRequest associated with the failed request
+     * @return ResponseEntity containing ErrorResponse with BAD_REQUEST status and error details
      */
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorResponse> handleHttpMessageNotReadableException(HttpMessageNotReadableException e,
@@ -171,6 +207,10 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles HttpMediaTypeNotAcceptableException and returns a BAD_REQUEST response with the error details.
+     *
+     * @param e       the HttpMediaTypeNotAcceptableException thrown when the requested media type is not acceptable
+     * @param request the HttpServletRequest associated with the failed request
+     * @return ResponseEntity containing ErrorResponse with BAD_REQUEST status and error details
      */
     @ExceptionHandler(HttpMediaTypeNotAcceptableException.class)
     public ResponseEntity<ErrorResponse> handleHttpMediaTypeNotAcceptableException(HttpMediaTypeNotAcceptableException e,
@@ -187,6 +227,10 @@ public class GlobalExceptionHandler {
 
     /**
      * Handles all other exceptions not caught by specific handlers and returns an INTERNAL_SERVER_ERROR response.
+     *
+     * @param e       the Exception not specifically handled by other handlers
+     * @param request the HttpServletRequest associated with the failed request
+     * @return ResponseEntity containing ErrorResponse with INTERNAL_SERVER_ERROR status and error details
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleAllExceptions(Exception e, HttpServletRequest request) {
