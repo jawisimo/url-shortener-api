@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.stackoverblack</groupId>
+    <groupId>com.jawisimo</groupId>
     <artifactId>url-shortener-api</artifactId>
     <version>1.0</version>
     <name>Url Shortener Api</name>
@@ -166,7 +166,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>3.4.1</version>
                 <configuration>
-                    <mainClass>com.stackoverblack.urlshortener.UrlShortenerApiApplication</mainClass>
+                    <mainClass>com.jawisimo.urlshortener.UrlShortenerApiApplication</mainClass>
                 </configuration>
             </plugin>
 
