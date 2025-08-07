@@ -1,4 +1,4 @@
-package com.stackoverblack.urlshortener.doc.annotations.url;
+package com.stackoverblack.urlshortener.doc.annotation.url;
 
 import com.stackoverblack.urlshortener.error.ErrorResponse;
 import com.stackoverblack.urlshortener.url.dto.operations.UrlResponse;
@@ -15,8 +15,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Operation(
-        summary = "Update a shortened URL",
-        description = "Modifies the stored URL mapping")
+        summary = "Retrieve a long URL",
+        description = "Finds the original URL from a given short URL code")
 @ApiResponses({
         @ApiResponse(
                 responseCode = "200",
@@ -24,30 +24,14 @@ import java.lang.annotation.Target;
                 content = @Content(schema = @Schema(implementation = UrlResponse.class))),
         @ApiResponse(
                 responseCode = "400",
-                description = "Data is not correct (e.g., incorrect short URL code or expires date)",
+                description = "Short url code is not correct.",
                 content = @Content(
                         schema = @Schema(implementation = ErrorResponse.class),
                         examples = @ExampleObject(
                                 name = "BadRequestExample",
-                                ref = "#/components/examples/BadRequestExample"))),
-        @ApiResponse(
-                responseCode = "403",
-                description = "Forbidden",
-                content = @Content(
-                        schema = @Schema(implementation = ErrorResponse.class),
-                        examples = @ExampleObject(
-                                name = "ForbiddenExample",
-                                ref = "#/components/examples/ForbiddenExample"))),
-        @ApiResponse(
-                responseCode = "404",
-                description = "URL not found",
-                content = @Content(
-                        schema = @Schema(implementation = ErrorResponse.class),
-                        examples = @ExampleObject(
-                                name = "NotFoundExample",
-                                ref = "#/components/examples/NotFoundExample")))
+                                ref = "#/components/examples/BadRequestExample")))
 })
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface UpdateUrlOpenApi {
+public @interface LongFromShortOpenApi {
 }

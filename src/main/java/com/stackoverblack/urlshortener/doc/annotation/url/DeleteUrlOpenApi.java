@@ -1,7 +1,6 @@
-package com.stackoverblack.urlshortener.doc.annotations.url;
+package com.stackoverblack.urlshortener.doc.annotation.url;
 
 import com.stackoverblack.urlshortener.error.ErrorResponse;
-import com.stackoverblack.urlshortener.url.dto.statistics.StatsListUrlResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -15,17 +14,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Operation(
-        summary = "Get URLs",
-        description = "Retrieves URLs created by the authenticated user"
-)
+        summary = "Delete a shortened URL",
+        description = "Removes a URL mapping from the system")
 @ApiResponses({
         @ApiResponse(
-                responseCode = "200",
-                description = "URLs provided",
-                content = @Content(
-                        mediaType = "application/json",
-                        schema = @Schema(implementation = StatsListUrlResponse.class))
-        ),
+                responseCode = "204",
+                description = "Url has been deleted successfully",
+                content = @Content()),
         @ApiResponse(
                 responseCode = "403",
                 description = "Forbidden",
@@ -33,9 +28,17 @@ import java.lang.annotation.Target;
                         schema = @Schema(implementation = ErrorResponse.class),
                         examples = @ExampleObject(
                                 name = "ForbiddenExample",
-                                ref = "#/components/examples/ForbiddenExample")))
+                                ref = "#/components/examples/ForbiddenExample"))),
+        @ApiResponse(
+                responseCode = "404",
+                description = "URL not found",
+                content = @Content(
+                        schema = @Schema(implementation = ErrorResponse.class),
+                        examples = @ExampleObject(
+                                name = "NotFoundExample",
+                                ref = "#/components/examples/NotFoundExample")))
 })
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface UrlListOpenApi {
+public @interface DeleteUrlOpenApi {
 }

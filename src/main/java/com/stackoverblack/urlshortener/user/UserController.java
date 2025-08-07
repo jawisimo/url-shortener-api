@@ -1,7 +1,7 @@
 package com.stackoverblack.urlshortener.user;
 
-import com.stackoverblack.urlshortener.doc.annotations.user.RegisterUserOpenApi;
-import com.stackoverblack.urlshortener.doc.annotations.user.RegisterUserOpenApiRequestBody;
+import com.stackoverblack.urlshortener.doc.annotation.user.RegisterUserOpenApi;
+import com.stackoverblack.urlshortener.doc.annotation.user.RegisterUserOpenApiRequestBody;
 import com.stackoverblack.urlshortener.user.dto.RegisterUserRequest;
 import com.stackoverblack.urlshortener.user.dto.RegisterUserResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;

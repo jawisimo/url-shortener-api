@@ -1,4 +1,4 @@
-package com.stackoverblack.urlshortener.doc.annotations.url;
+package com.stackoverblack.urlshortener.doc.annotation.url;
 
 import com.stackoverblack.urlshortener.url.dto.operations.GetShortUrlRequest;
 import io.swagger.v3.oas.annotations.media.Content;

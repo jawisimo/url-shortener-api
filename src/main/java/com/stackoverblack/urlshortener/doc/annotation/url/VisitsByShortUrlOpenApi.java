@@ -1,6 +1,7 @@
-package com.stackoverblack.urlshortener.doc.annotations.url;
+package com.stackoverblack.urlshortener.doc.annotation.url;
 
 import com.stackoverblack.urlshortener.error.ErrorResponse;
+import com.stackoverblack.urlshortener.url.dto.statistics.StatsVisitsUrlResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -14,13 +15,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Operation(
-        summary = "Delete a shortened URL",
-        description = "Removes a URL mapping from the system")
+        summary = "Get visit count for a URL",
+        description = "Retrieves the number of times a short URL has been visited")
 @ApiResponses({
         @ApiResponse(
-                responseCode = "204",
-                description = "Url has been deleted successfully",
-                content = @Content()),
+                responseCode = "200",
+                description = "URL provided",
+                content = @Content(schema = @Schema(implementation = StatsVisitsUrlResponse.class))),
         @ApiResponse(
                 responseCode = "403",
                 description = "Forbidden",
@@ -40,5 +41,5 @@ import java.lang.annotation.Target;
 })
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface DeleteUrlOpenApi {
+public @interface VisitsByShortUrlOpenApi {
 }

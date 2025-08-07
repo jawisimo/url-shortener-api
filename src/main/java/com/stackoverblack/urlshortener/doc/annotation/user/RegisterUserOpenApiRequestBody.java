@@ -1,4 +1,4 @@
-package com.stackoverblack.urlshortener.doc.annotations.user;
+package com.stackoverblack.urlshortener.doc.annotation.user;
 
 import com.stackoverblack.urlshortener.user.dto.RegisterUserRequest;
 import io.swagger.v3.oas.annotations.media.Content;

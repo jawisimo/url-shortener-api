@@ -1,7 +1,7 @@
-package com.stackoverblack.urlshortener.doc.annotations.url;
+package com.stackoverblack.urlshortener.doc.annotation.url;
 
 import com.stackoverblack.urlshortener.error.ErrorResponse;
-import com.stackoverblack.urlshortener.url.dto.statistics.StatsVisitsUrlResponse;
+import com.stackoverblack.urlshortener.url.dto.operations.UrlResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -15,13 +15,21 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Operation(
-        summary = "Get visit count for a URL",
-        description = "Retrieves the number of times a short URL has been visited")
+        summary = "Update a shortened URL",
+        description = "Modifies the stored URL mapping")
 @ApiResponses({
         @ApiResponse(
                 responseCode = "200",
-                description = "URL provided",
-                content = @Content(schema = @Schema(implementation = StatsVisitsUrlResponse.class))),
+                description = "Long URL returned",
+                content = @Content(schema = @Schema(implementation = UrlResponse.class))),
+        @ApiResponse(
+                responseCode = "400",
+                description = "Data is not correct (e.g., incorrect short URL code or expires date)",
+                content = @Content(
+                        schema = @Schema(implementation = ErrorResponse.class),
+                        examples = @ExampleObject(
+                                name = "BadRequestExample",
+                                ref = "#/components/examples/BadRequestExample"))),
         @ApiResponse(
                 responseCode = "403",
                 description = "Forbidden",
@@ -41,5 +49,5 @@ import java.lang.annotation.Target;
 })
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface VisitsByShortUrlOpenApi {
+public @interface UpdateUrlOpenApi {
 }

@@ -1,7 +1,7 @@
 package com.stackoverblack.urlshortener.url.controller;
 
-import com.stackoverblack.urlshortener.doc.annotations.url.UrlListOpenApi;
-import com.stackoverblack.urlshortener.doc.annotations.url.VisitsByShortUrlOpenApi;
+import com.stackoverblack.urlshortener.doc.annotation.url.UrlListOpenApi;
+import com.stackoverblack.urlshortener.doc.annotation.url.VisitsByShortUrlOpenApi;
 import com.stackoverblack.urlshortener.url.dto.statistics.StatsListUrlResponse;
 import com.stackoverblack.urlshortener.url.dto.statistics.StatsVisitsUrlResponse;
 import com.stackoverblack.urlshortener.url.service.StatsService;
