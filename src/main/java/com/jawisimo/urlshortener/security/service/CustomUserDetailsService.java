@@ -33,11 +33,11 @@ public class CustomUserDetailsService implements UserDetailsService {
         AuthIdentifierType identifierType = AuthIdentifierType.detectType(identifier);
 
         return switch (identifierType) {
-            case AuthIdentifierType.LOGIN -> userRepository.findUserByLogin(identifier)
+            case LOGIN -> userRepository.findUserByLogin(identifier)
                     .map(CustomUserDetails::new)
                     .orElseThrow(() -> new UsernameNotFoundException(
                             generateUserWithLoginNotFoundMessage(identifier)));
-            case AuthIdentifierType.EMAIL -> userRepository.findUserByEmail(identifier)
+            case EMAIL -> userRepository.findUserByEmail(identifier)
                     .map(CustomUserDetails::new)
                     .orElseThrow(() -> new UsernameNotFoundException(
                             generateUserWithEmailNotFoundMessage(identifier)));
