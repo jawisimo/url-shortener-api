@@ -52,7 +52,7 @@ The URL Shortener Project provides the following features:
   ```bash
   mvn clean spring-boot:run -Pdev
 
-### Test Environment (test profile)
+### Running tests
 
 - **Start tests (with test database)**:  
   ```bash
@@ -78,4 +78,4 @@ with the corresponding profile:
 
 ## Author
 
-Developed by [Ihor Kolybaba](https://github.com/stackoverblack)
+Developed by [Ihor Kolybaba](https://github.com/jawisimo)
