@@ -9,7 +9,7 @@ import java.util.TimeZone;
 public class UrlShortenerApiApplication {
 
     public static void main(String[] args) {
-        TimeZone.setDefault(TimeZone.getTimeZone("Europe/Kyiv"));
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         SpringApplication.run(UrlShortenerApiApplication.class, args);
     }
 
