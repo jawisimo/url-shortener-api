@@ -76,4 +76,5 @@ public class StatsController {
         StatsVisitsUrlResponse response = statsService.getVisitsByShortUrl(shortUrlCode);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
 }

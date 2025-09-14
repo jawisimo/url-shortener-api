@@ -1,22 +1,22 @@
 package com.jawisimo.urlshortener.security;
 
-import com.jawisimo.urlshortener.error.ErrorResponse;
+import com.jawisimo.urlshortener.doc.annotation.security.AuthenticateUserOpenApi;
+import com.jawisimo.urlshortener.doc.annotation.security.AuthenticateUserRequestBodyOpenApi;
+import com.jawisimo.urlshortener.doc.annotation.security.RefreshUserTokenOpenApi;
+import com.jawisimo.urlshortener.doc.annotation.security.RefreshUserTokenRequestBodyOpenApi;
 import com.jawisimo.urlshortener.security.dto.AuthUserRequest;
 import com.jawisimo.urlshortener.security.dto.AuthUserResponse;
 import com.jawisimo.urlshortener.security.dto.RefreshTokenRequest;
 import com.jawisimo.urlshortener.security.dto.RefreshTokenResponse;
 import com.jawisimo.urlshortener.security.service.JwtAuthenticationService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.ExampleObject;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Controller responsible for handling authentication-related requests.
@@ -38,35 +38,10 @@ public class AuthenticationController {
      * @param request the authentication request containing identifier and password
      * @return {@link ResponseEntity} with {@link AuthUserResponse} and HTTP 200 status
      */
-    @Operation(
-            summary = "User log in",
-            description = "Authenticates a user by login or email and returns the JWT access token and refresh token")
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "User successfully authenticated",
-                    content = @Content(schema = @Schema(implementation = AuthUserResponse.class))),
-            @ApiResponse(
-                    responseCode = "400",
-                    description = "Input data is not correct (e.g., incorrect login, email or password format)",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponse.class),
-                            examples = @ExampleObject(
-                                    name = "BadRequestExample",
-                                    ref = "#/components/examples/BadRequestExample"))),
-            @ApiResponse(
-                    responseCode = "401",
-                    description = "User not authenticated (e.g., wrong password)",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponse.class),
-                            examples = @ExampleObject(
-                                    name = "UnauthorizedExample",
-                                    ref = "#/components/examples/UnauthorizedExample")))
-    })
+    @AuthenticateUserOpenApi
     @PostMapping("/login")
     public ResponseEntity<AuthUserResponse> authenticateUser(
-            @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    content = @Content(schema = @Schema(implementation = AuthUserRequest.class)))
+            @AuthenticateUserRequestBodyOpenApi
             @RequestBody
             AuthUserRequest request) {
         AuthUserResponse response = authService.authenticate(request);
@@ -81,30 +56,14 @@ public class AuthenticationController {
      * @param request the refresh token request
      * @return {@link ResponseEntity} with {@link RefreshTokenResponse} and HTTP 200 status
      */
-    @Operation(
-            summary = "User refresh token",
-            description = "Refresh user JWT token")
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "JWT token was refreshed successfully",
-                    content = @Content(schema = @Schema(implementation = RefreshTokenResponse.class))),
-            @ApiResponse(
-                    responseCode = "401",
-                    description = "JWT token is not valid",
-                    content = @Content(
-                            schema = @Schema(implementation = ErrorResponse.class),
-                            examples = @ExampleObject(
-                                    name = "UnauthorizedExample",
-                                    ref = "#/components/examples/UnauthorizedExample")))
-    })
+    @RefreshUserTokenOpenApi
     @PostMapping("/refresh")
     public ResponseEntity<RefreshTokenResponse> refreshUserToken(
-            @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    content = @Content(schema = @Schema(implementation = RefreshTokenRequest.class)))
+            @RefreshUserTokenRequestBodyOpenApi
             @RequestBody
             RefreshTokenRequest request) {
         RefreshTokenResponse response = authService.refreshToken(request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
 }

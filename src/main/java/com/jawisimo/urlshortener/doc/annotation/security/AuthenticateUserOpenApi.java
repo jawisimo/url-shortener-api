@@ -1,7 +1,7 @@
-package com.jawisimo.urlshortener.doc.annotation.url;
+package com.jawisimo.urlshortener.doc.annotation.security;
 
 import com.jawisimo.urlshortener.error.ErrorResponse;
-import com.jawisimo.urlshortener.url.dto.operations.UrlResponse;
+import com.jawisimo.urlshortener.security.dto.AuthUserResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -15,31 +15,31 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Operation(
-        summary = "Retrieve a long URL",
-        description = "Finds the original URL from a given short URL code")
+        summary = "User log in",
+        description = "Authenticates a user by login or email and returns the JWT access token and refresh token")
 @ApiResponses({
         @ApiResponse(
                 responseCode = "200",
-                description = "Long URL returned",
-                content = @Content(schema = @Schema(implementation = UrlResponse.class))),
+                description = "User successfully authenticated",
+                content = @Content(schema = @Schema(implementation = AuthUserResponse.class))),
         @ApiResponse(
                 responseCode = "400",
-                description = "Short url code is not correct",
+                description = "Input data is not correct (e.g., incorrect login, email or password format)",
                 content = @Content(
                         schema = @Schema(implementation = ErrorResponse.class),
                         examples = @ExampleObject(
                                 name = "BadRequestExample",
                                 ref = "#/components/examples/BadRequestExample"))),
         @ApiResponse(
-                responseCode = "404",
-                description = "Url not found",
+                responseCode = "401",
+                description = "User not authenticated (e.g., wrong password)",
                 content = @Content(
                         schema = @Schema(implementation = ErrorResponse.class),
                         examples = @ExampleObject(
-                                name = "NotFoundExample",
-                                ref = "#/components/examples/NotFoundExample")))
+                                name = "UnauthorizedExample",
+                                ref = "#/components/examples/UnauthorizedExample")))
 })
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface LongFromShortOpenApi {
+public @interface AuthenticateUserOpenApi {
 }

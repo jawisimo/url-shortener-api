@@ -1,7 +1,7 @@
 package com.jawisimo.urlshortener.user;
 
 import com.jawisimo.urlshortener.doc.annotation.user.RegisterUserOpenApi;
-import com.jawisimo.urlshortener.doc.annotation.user.RegisterUserOpenApiRequestBody;
+import com.jawisimo.urlshortener.doc.annotation.user.RegisterUserRequestBodyOpenApi;
 import com.jawisimo.urlshortener.user.dto.RegisterUserRequest;
 import com.jawisimo.urlshortener.user.dto.RegisterUserResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -40,9 +40,10 @@ public class UserController {
     @RegisterUserOpenApi
     @PostMapping("/register")
     public ResponseEntity<RegisterUserResponse> registerUser(
-            @RegisterUserOpenApiRequestBody
+            @RegisterUserRequestBodyOpenApi
             @RequestBody RegisterUserRequest request) {
         RegisterUserResponse response = userService.register(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+
 }

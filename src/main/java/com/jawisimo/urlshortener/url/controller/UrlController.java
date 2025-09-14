@@ -37,10 +37,10 @@ public class UrlController {
     @ShortFromLongOpenApi
     @PostMapping
     public ResponseEntity<UrlResponse> shortFromLong(
-            @ShortFromLongOpenApiRequestBody
+            @ShortFromLongRequestBodyOpenApi
             @RequestBody GetShortUrlRequest request) {
         UrlResponse response = urlService.getShortUrlCodeFromLongUrl(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     /**
@@ -56,7 +56,7 @@ public class UrlController {
     @PostMapping("/{shortUrlCode}")
     public ResponseEntity<UrlResponse> longFromShort(@PathVariable String shortUrlCode) {
         UrlResponse response = urlService.getLongUrlFromShortUrl(shortUrlCode);
-        return ResponseEntity.ok().body(response);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     /**
@@ -72,10 +72,10 @@ public class UrlController {
     @UpdateUrlOpenApi
     @PatchMapping
     public ResponseEntity<UrlResponse> updateUrl(
-            @UpdateUrlOpenApiRequestBody
+            @UpdateUrlRequestBodyOpenApi
             @RequestBody UpdateUrlRequest request) {
         UrlResponse response = urlService.updateUrl(request);
-        return ResponseEntity.ok().body(response);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     /**
@@ -91,6 +91,7 @@ public class UrlController {
     @DeleteMapping("/{shortUrlCode}")
     public ResponseEntity<UrlResponse> deleteUrl(@PathVariable String shortUrlCode) {
         urlService.deleteUrl(shortUrlCode);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }

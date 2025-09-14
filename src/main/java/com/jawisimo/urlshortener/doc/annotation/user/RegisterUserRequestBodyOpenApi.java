@@ -1,6 +1,6 @@
-package com.jawisimo.urlshortener.doc.annotation.url;
+package com.jawisimo.urlshortener.doc.annotation.user;
 
-import com.jawisimo.urlshortener.url.dto.operations.GetShortUrlRequest;
+import com.jawisimo.urlshortener.user.dto.RegisterUserRequest;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -10,8 +10,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @io.swagger.v3.oas.annotations.parameters.RequestBody(
-        content = @Content(schema = @Schema(implementation = GetShortUrlRequest.class)))
+        content = @Content(schema = @Schema(implementation = RegisterUserRequest.class)))
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
-public @interface ShortFromLongOpenApiRequestBody {
+public @interface RegisterUserRequestBodyOpenApi {
 }
