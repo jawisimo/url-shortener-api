@@ -136,7 +136,7 @@
                             <systemPropertyVariables>
                                 <spring.profiles.active>test</spring.profiles.active>
                             </systemPropertyVariables>
-                            <argLine>${timezone}</argLine>
+                            <argLine>@{argLine} ${timezone}</argLine>
                         </configuration>
                     </plugin>
                 </plugins>

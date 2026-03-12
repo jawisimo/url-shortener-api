@@ -46,7 +46,7 @@ The URL Shortener Project provides the following features:
 
 - **Start the development database stack**:  
   ```bash
-  docker-compose -p url_shortener_api_devstack -f ./docker-compose-dev.yml up --build
+  docker compose -p url_shortener_api_devstack -f ./docker-compose-dev.yml up --build
 
 - **Run the application**:  
   ```bash
@@ -66,7 +66,7 @@ The URL Shortener Project provides the following features:
 
 - **Start the full application stack**:  
   ```bash
-  docker-compose -p url_shortener_api_prodstack -f ./docker-compose-prod.yml up --build
+  docker compose -p url_shortener_api_prodstack -f ./docker-compose-prod.yml up --build
 
 ## Swagger UI
 
